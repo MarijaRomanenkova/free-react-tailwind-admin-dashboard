@@ -1,9 +1,9 @@
 import React from 'react';
 import DefaultLayout from '../../layout/DefaultLayout';
 import Breadcrumb from '../../components/Breadcrumb';
-import Logo from '../../images/logo/logo.svg'
-import LogoDark from '../../images/logo/logo-dark.svg'
-import { Link } from 'react-router-dom'
+import Logo from '../../images/logo/logo.png';
+import LogoDark from '../../images/logo/logo-dark.svg';
+import { Link } from 'react-router-dom';
 
 const SignIn = () => {
   return (
@@ -281,7 +281,7 @@ const SignIn = () => {
         </div>
       </div>
     </DefaultLayout>
-  )
-}
+  );
+};
 
 export default SignIn;

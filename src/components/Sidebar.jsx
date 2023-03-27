@@ -1,54 +1,54 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
-import SidebarLinkGroup from './SidebarLinkGroup'
-import Logo from '../images/logo/logo.svg'
+import React, { useState, useEffect, useRef } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import SidebarLinkGroup from './SidebarLinkGroup';
+import Logo from '../images/logo/logo.png';
 
 const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
-  const location = useLocation()
-  const { pathname } = location
+  const location = useLocation();
+  const { pathname } = location;
 
-  const trigger = useRef(null)
-  const sidebar = useRef(null)
+  const trigger = useRef(null);
+  const sidebar = useRef(null);
 
-  const storedSidebarExpanded = localStorage.getItem('sidebar-expanded')
+  const storedSidebarExpanded = localStorage.getItem('sidebar-expanded');
   const [sidebarExpanded, setSidebarExpanded] = useState(
     storedSidebarExpanded === null ? false : storedSidebarExpanded === 'true'
-  )
+  );
 
   // close on click outside
   useEffect(() => {
     const clickHandler = ({ target }) => {
-      if (!sidebar.current || !trigger.current) return
+      if (!sidebar.current || !trigger.current) return;
       if (
         !sidebarOpen ||
         sidebar.current.contains(target) ||
         trigger.current.contains(target)
       )
-        return
-      setSidebarOpen(false)
-    }
-    document.addEventListener('click', clickHandler)
-    return () => document.removeEventListener('click', clickHandler)
-  })
+        return;
+      setSidebarOpen(false);
+    };
+    document.addEventListener('click', clickHandler);
+    return () => document.removeEventListener('click', clickHandler);
+  });
 
   // close if the esc key is pressed
   useEffect(() => {
     const keyHandler = ({ keyCode }) => {
-      if (!sidebarOpen || keyCode !== 27) return
-      setSidebarOpen(false)
-    }
-    document.addEventListener('keydown', keyHandler)
-    return () => document.removeEventListener('keydown', keyHandler)
-  })
+      if (!sidebarOpen || keyCode !== 27) return;
+      setSidebarOpen(false);
+    };
+    document.addEventListener('keydown', keyHandler);
+    return () => document.removeEventListener('keydown', keyHandler);
+  });
 
   useEffect(() => {
-    localStorage.setItem('sidebar-expanded', sidebarExpanded)
+    localStorage.setItem('sidebar-expanded', sidebarExpanded);
     if (sidebarExpanded) {
-      document.querySelector('body').classList.add('sidebar-expanded')
+      document.querySelector('body').classList.add('sidebar-expanded');
     } else {
-      document.querySelector('body').classList.remove('sidebar-expanded')
+      document.querySelector('body').classList.remove('sidebar-expanded');
     }
-  }, [sidebarExpanded])
+  }, [sidebarExpanded]);
 
   return (
     <aside
@@ -60,7 +60,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
       {/* <!-- SIDEBAR HEADER --> */}
       <div className='flex items-center justify-between gap-2 px-6 py-5.5 lg:py-6.5'>
         <NavLink to='/'>
-          <img src={Logo} alt='Logo' />
+          <img src={Logo} alt='SIDC PASSER' />
         </NavLink>
 
         <button
@@ -100,7 +100,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               {/* <!-- Menu Item Dashboard --> */}
               <SidebarLinkGroup
                 activeCondition={
-                  pathname === '/' || pathname.includes('dashboard')
+                  pathname === '/' || pathname.includes('workers')
                 }
               >
                 {(handleClick, open) => {
@@ -109,15 +109,14 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                       <NavLink
                         to='#'
                         className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                          (pathname === '/' ||
-                            pathname.includes('dashboard')) &&
+                          (pathname === '/' || pathname.includes('workers')) &&
                           'bg-graydark dark:bg-meta-4'
                         }`}
                         onClick={(e) => {
-                          e.preventDefault()
+                          e.preventDefault();
                           sidebarExpanded
                             ? handleClick()
-                            : setSidebarExpanded(true)
+                            : setSidebarExpanded(true);
                         }}
                       >
                         <svg
@@ -145,7 +144,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                             fill=''
                           />
                         </svg>
-                        Dashboard
+                        Workers
                         <svg
                           className={`absolute right-4 top-1/2 -translate-y-1/2 fill-current ${
                             open && 'rotate-180'
@@ -186,7 +185,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                       </div>
                       {/* <!-- Dropdown Menu End --> */}
                     </React.Fragment>
-                  )
+                  );
                 }}
               </SidebarLinkGroup>
               {/* <!-- Menu Item Dashboard --> */}
@@ -265,10 +264,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           'bg-graydark dark:bg-meta-4'
                         }`}
                         onClick={(e) => {
-                          e.preventDefault()
+                          e.preventDefault();
                           sidebarExpanded
                             ? handleClick()
-                            : setSidebarExpanded(true)
+                            : setSidebarExpanded(true);
                         }}
                       >
                         <svg
@@ -352,7 +351,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                       </div>
                       {/* <!-- Dropdown Menu End --> */}
                     </React.Fragment>
-                  )
+                  );
                 }}
               </SidebarLinkGroup>
               {/* <!-- Menu Item Forms --> */}
@@ -439,7 +438,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
               {/* <!-- Menu Item Settings --> */}
             </ul>
           </div>
-          
+
           {/* <!-- Others Group --> */}
           <div>
             <h3 className='mb-4 ml-4 text-sm font-semibold text-bodydark2'>
@@ -503,10 +502,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           'bg-graydark dark:bg-meta-4'
                         }`}
                         onClick={(e) => {
-                          e.preventDefault()
+                          e.preventDefault();
                           sidebarExpanded
                             ? handleClick()
-                            : setSidebarExpanded(true)
+                            : setSidebarExpanded(true);
                         }}
                       >
                         <svg
@@ -594,7 +593,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                       </div>
                       {/* <!-- Dropdown Menu End --> */}
                     </React.Fragment>
-                  )
+                  );
                 }}
               </SidebarLinkGroup>
               {/* <!-- Menu Item Ui Elements --> */}
@@ -615,10 +614,10 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                           'bg-graydark dark:bg-meta-4'
                         }`}
                         onClick={(e) => {
-                          e.preventDefault()
+                          e.preventDefault();
                           sidebarExpanded
                             ? handleClick()
-                            : setSidebarExpanded(true)
+                            : setSidebarExpanded(true);
                         }}
                       >
                         <svg
@@ -702,7 +701,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
                       </div>
                       {/* <!-- Dropdown Menu End --> */}
                     </React.Fragment>
-                  )
+                  );
                 }}
               </SidebarLinkGroup>
               {/* <!-- Menu Item Auth Pages --> */}
@@ -712,7 +711,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }) => {
         {/* <!-- Sidebar Menu --> */}
       </div>
     </aside>
-  )
-}
+  );
+};
 
 export default Sidebar;

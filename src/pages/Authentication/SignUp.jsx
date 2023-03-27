@@ -1,7 +1,7 @@
 import React from 'react';
 import DefaultLayout from '../../layout/DefaultLayout';
 import Breadcrumb from '../../components/Breadcrumb';
-import Logo from '../../images/logo/logo.svg';
+import Logo from '../../images/logo/logo.png';
 import LogoDark from '../../images/logo/logo-dark.svg';
 import { Link } from 'react-router-dom';
 
@@ -351,7 +351,7 @@ const SignUp = () => {
         </div>
       </div>
     </DefaultLayout>
-  )
-}
+  );
+};
 
 export default SignUp;
