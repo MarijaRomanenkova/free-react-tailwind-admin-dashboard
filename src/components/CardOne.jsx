@@ -49,7 +49,7 @@ const CardOne = () => {
         </span>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default CardOne;

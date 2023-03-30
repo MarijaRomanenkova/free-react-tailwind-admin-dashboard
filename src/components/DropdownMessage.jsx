@@ -1,42 +1,42 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-import UserOne from '../images/user/user-01.png'
-import UserTwo from '../images/user/user-02.png'
-import UserThree from '../images/user/user-03.png'
-import UserFour from '../images/user/user-04.png'
+import UserOne from '../images/user/user-01.png';
+import UserTwo from '../images/user/user-02.png';
+import UserThree from '../images/user/user-03.png';
+import UserFour from '../images/user/user-04.png';
 
 const DropdownMessage = () => {
-  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
-  const trigger = useRef(null)
-  const dropdown = useRef(null)
+  const trigger = useRef(null);
+  const dropdown = useRef(null);
 
   // close on click outside
   useEffect(() => {
     const clickHandler = ({ target }) => {
-      if (!dropdown.current) return
+      if (!dropdown.current) return;
       if (
         !dropdownOpen ||
         dropdown.current.contains(target) ||
         trigger.current.contains(target)
       )
-        return
-      setDropdownOpen(false)
-    }
-    document.addEventListener('click', clickHandler)
-    return () => document.removeEventListener('click', clickHandler)
-  })
+        return;
+      setDropdownOpen(false);
+    };
+    document.addEventListener('click', clickHandler);
+    return () => document.removeEventListener('click', clickHandler);
+  });
 
   // close if the esc key is pressed
   useEffect(() => {
     const keyHandler = ({ keyCode }) => {
-      if (!dropdownOpen || keyCode !== 27) return
-      setDropdownOpen(false)
-    }
-    document.addEventListener('keydown', keyHandler)
-    return () => document.removeEventListener('keydown', keyHandler)
-  })
+      if (!dropdownOpen || keyCode !== 27) return;
+      setDropdownOpen(false);
+    };
+    document.addEventListener('keydown', keyHandler);
+    return () => document.removeEventListener('keydown', keyHandler);
+  });
 
   return (
     <li className='relative' x-data='{ dropdownOpen: false, notifying: true }'>
@@ -87,7 +87,7 @@ const DropdownMessage = () => {
         }`}
       >
         <div className='px-4.5 py-3'>
-          <h5 className='text-sm font-medium text-bodydark2'>Messages</h5>
+          <h5 className='text-sm font-medium'>Messages</h5>
         </div>
 
         <ul className='flex h-auto flex-col overflow-y-auto'>
@@ -185,7 +185,7 @@ const DropdownMessage = () => {
       </div>
       {/* <!-- Dropdown End --> */}
     </li>
-  )
-}
+  );
+};
 
 export default DropdownMessage;

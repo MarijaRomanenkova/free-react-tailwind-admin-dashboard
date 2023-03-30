@@ -1,4 +1,5 @@
 import React from 'react';
+import Pagination from './pagination';
 
 const TableThree = () => {
   return (
@@ -25,7 +26,7 @@ const TableThree = () => {
             <tr>
               <td className='border-b border-[#eee] py-5 px-4 pl-9 dark:border-strokedark xl:pl-11'>
                 <h5 className='font-medium text-black dark:text-white'>
-                  Free Package
+                  Client Name
                 </h5>
                 <p className='text-sm'>$0.00</p>
               </td>
@@ -364,9 +365,10 @@ const TableThree = () => {
             </tr>
           </tbody>
         </table>
+        <Pagination />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default TableThree;
